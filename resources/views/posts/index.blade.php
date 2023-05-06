@@ -19,5 +19,6 @@
                 </div>
             @endforeach      <!-- MariaDBのpostsから呼び出している-->
         </div>
+        <div class'paginate'>{{ $posts->links() }}</div>
     </body>
 </html>
