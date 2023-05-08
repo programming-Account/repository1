@@ -21,5 +21,7 @@
         </div>
         <div class="footer">
             <a href="/">戻る</a>
+            <a href="/posts/create">投稿作成</a>
+        </div>
     </body>
 </html>
