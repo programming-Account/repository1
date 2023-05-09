@@ -20,7 +20,7 @@
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
                 </div>
-            @endforeach      <!-- MariaDBのpostsから呼び出している-->
+            @endforeach
         </div>
         <div class'paginate'>{{ $posts->links() }}</div>
     </body>

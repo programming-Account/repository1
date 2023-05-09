@@ -21,7 +21,7 @@
         </div>
         <div class="footer">
             <a href="/">戻る</a>
-            <a href="/posts/create">投稿作成</a>
+            <a href="/posts/{{ $post->id }}/edit">編集</a>
         </div>
     </body>
 </html>
