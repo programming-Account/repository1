@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use App\Models\Category;
+
 class PostController extends Controller
 {
     public function index(Post $post)
@@ -15,11 +17,6 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts/show')->with(['post' => $post]);
-    }
-    
-    public function create()
-    {
-        return view('posts/create');
     }
     
     public function store(PostRequest $request, Post $post)
@@ -34,9 +31,9 @@ class PostController extends Controller
         return view('/posts/edit')->with(['post' => $post]);
     }
     
-    public function update(PostRequest $request, Post $post) 
+    public function update(PostRequest $request, Post $post) //この$postにはデータが入ってる
     {
-        $input_post = $request['post'];
+        $input_post = $request['post'];//nameタグからデータを取得しているのになぜわざわざルートパラメータをつけたのか？つけないとどーなるのか？
         $post->fill($input_post)->save();
         return redirect('/posts/' . $post->id);
     }
@@ -45,5 +42,10 @@ class PostController extends Controller
     {
         $post->delete();
         return redirect('/');
+    }
+    
+    public function create(Category $category)
+    {
+        return view('posts/create')->with(['categories' => $category->get()]);
     }
 }

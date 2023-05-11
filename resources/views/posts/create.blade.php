@@ -10,7 +10,7 @@
         
     </head>
     <body class="antialiased">
-        <h1>投稿作成ページ</h1>
+        <h1>Blog Name</h1>
         <form action="/posts" method="POST">
             @csrf
             <div class="title">
@@ -22,6 +22,14 @@
                 <h2>body：</h2>
                 <textarea name="post[body]" placeholder="今日も一日おつかれさまでした。" value="{{ old('post.title') }}"></textarea>
                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+            </div>
+            <div class="category">
+                <h2>Category：</h2>
+                <select name="post[category_id]">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div>
                 <input type="submit" value="実行">
